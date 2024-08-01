@@ -1,21 +1,32 @@
 pipeline {
     agent any
 
+    environment {
+        ANSIBLE_HOST_KEY_CHECKING = 'False'
+    }
+
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo 'Building..'
+                // Checkout your code from the repository
+                git 'https://github.com/sen2diwakar/repo.git'
             }
         }
-        stage('Test') {
+
+        stage('Run Ansible Playbook') {
             steps {
-                ansible-playbook, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory', playbook: 'sh_ip_arp.yml'  
+                // Run the Ansible playbook
+                sh '''
+                ansible-playbook -i inventory sh_ip_arp.yml
+                '''
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
+    }
+
+    post {
+        always {
+            // Archive the results
+            archiveArtifacts artifacts: '**/results/*', allowEmptyArchive: true
         }
     }
 }
