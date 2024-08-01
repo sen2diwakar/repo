@@ -10,7 +10,7 @@ pipeline {
             steps {
                 // Run the Ansible playbook
                 sh '''
-                ansible-playbook -i inventory_file playbook.yml
+                ansible-playbook -i inventory sh_ip_arp.yml
                 '''
             }
         }
