@@ -1,0 +1,39 @@
+- name: GATHER INFORMATION FROM ROUTERS
+  hosts: router
+  connection: network_cli
+  tasks:
+    - name: GATHER ROUTER FACTS
+      ios_facts:
+
+    - name: DISPLAY VERSION Update
+      debug:
+        msg: "The IOS version is: {{ ansible_net_version }}"
+
+    - name: DISPLAY SERIAL NUMBER
+      debug:
+        msg: "The serial number is:{{ ansible_net_serialnum }}"
+
+    - name: RUN 'show arp'
+      ios_command:
+        commands:
+          - ter len 0
+          - show ip arp
+          - show ip bgp summary
+          - sh ip int br
+          - sh ip ospf neigh
+          - sh run
+          
+
+      register: ip_arp
+
+    - debug: var=ip_arp.stdout_lines
+
+    - name: run multiple commands and evaluate the output
+      ios_command:
+        commands:
+          - show version     
+        wait_for:
+          - result[0] contains IOS
+      register: ios_version
+
+    - debug: var=ios_version.stdout_lines
