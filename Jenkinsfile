@@ -10,15 +10,11 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    ansiblePlaybook(
-                        playbook: '/home/netbotadmin/sh_ip_arp.yml',
-                        inventory: '/home/netbotadmin/inventory',
-                        colorized: true)
                     // Ensure Ansible is in the PATH
                     sh 'export PATH=$PATH:/usr/bin/ansible'
 
                     // Run the playbook
-                    sh 'ansible-playbook -i inventory playbook'
+                    sh 'ansible-playbook -i /home/netbotadmin/inventory /home/netbotadmin/sh_ip_arp.yml'
                 }
             }
         }
