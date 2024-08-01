@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                ansible-playbook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory', playbook: 'sh_ip_arp.yml'  
+                ansible-playbook, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory', playbook: 'sh_ip_arp.yml'  
             }
         }
         stage('Deploy') {
