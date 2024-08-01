@@ -14,7 +14,7 @@ pipeline {
                     sh 'export PATH=$PATH:/usr/bin/ansible'
 
                     // Run the playbook
-                    sh 'ansible-playbook -i /home/netbotadmin/inventory /home/netbotadmin/sh_ip_arp.yml'
+                    sh 'ansible-playbook -i /home/netbotadmin/inventory sh_ip_arp.yml'
                 }
             }
         }
