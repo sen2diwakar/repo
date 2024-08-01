@@ -15,6 +15,7 @@ pipeline {
 
                     // Run the playbook
                     sh 'ansible-playbook -i inventory sh_ip_arp.yml'
+                }
             }
         }
         stage('Deploy') {
