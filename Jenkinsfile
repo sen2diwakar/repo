@@ -5,14 +5,15 @@ pipeline {
         ANSIBLE_HOST_KEY_CHECKING = 'False'
     }
 
-    stage('Run Ansible Playbook') {
-          steps {
-              // Run the Ansible playbook
-              sh '''
-              ansible-playbook -i inventory sh_ip_arp.yml
-              '''
-         }
-       }
+    stages {
+        stage('Run Ansible Playbook') {
+            steps {
+                // Run the Ansible playbook
+                sh '''
+                ansible-playbook -i inventory_file playbook.yml
+                '''
+            }
+        }
     }
 
     post {
