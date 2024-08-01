@@ -10,7 +10,7 @@ pipeline {
             steps {
                 // Run the Ansible playbook
                 sh '''
-                ansible-playbook -i inventory sh_ip_arp.yml
+                ansible-playbook -i /home/netbotadmin/inventory /home/netbotadmin/sh_ip_arp.yml
                 '''
             }
         }
