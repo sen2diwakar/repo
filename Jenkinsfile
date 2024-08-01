@@ -19,7 +19,7 @@ pipeline {
     post {
         always {
             // Archive the results
-            archiveArtifacts artifacts: '**/results/*', allowEmptyArchive: true
+            pwd
         }
     }
 }
