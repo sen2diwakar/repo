@@ -13,9 +13,6 @@ pipeline {
                 pwd
                 '''
                 sh '''
-                chdir /home/netbotadmin
-                '''
-                sh '''
                 ansible-playbook -i inventory sh_ip_arp.yml
                 '''
             }
