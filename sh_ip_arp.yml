@@ -1,5 +1,5 @@
 - name: GATHER INFORMATION FROM ROUTERS
-  hosts: router
+  hosts: hosts
   connection: network_cli
   tasks:
     - name: GATHER ROUTER FACTS
