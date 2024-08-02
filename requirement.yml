@@ -1,3 +1,9 @@
 collections:
 - name: cisco.ios
 - name: ansible.posix
+
+python:
+  ansible
+  ansible-pylibssh
+  netmiko
+  paramiko
