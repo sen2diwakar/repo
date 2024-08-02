@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Execute Ansible playbook') {
             steps {
-                ansiblePlaybook playbook: 'sh_ip_arp.yml', inventory: 'inventory.yaml', disableHostKeyChecking: true
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.yaml', playbook: 'sh_ip_arp.yml'
             }
         }
     }
