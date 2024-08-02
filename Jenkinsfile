@@ -13,6 +13,9 @@ pipeline {
                 pwd
                 '''
                 sh '''
+                ls
+                '''
+                sh '''
                 ansible-playbook -i inventory.yaml sh_ip_arp.yml
                 '''
             }
