@@ -6,18 +6,9 @@ pipeline {
     }
 
     stages {
-        stage('Run Ansible Playbook') {
+        stage('Execute Ansible playbook') {
             steps {
-                // Run the Ansible playbook
-                sh '''
-                pwd
-                '''
-                sh '''
-                ls
-                '''
-                sh '''
-                ansible-playbook -i inventory.yaml sh_ip_arp.yml
-                '''
+                ansiblePlaybook playbook: 'sh_ip_arp.yml', inventory: 'inventory.yaml'
             }
         }
     }
