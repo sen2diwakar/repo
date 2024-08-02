@@ -13,7 +13,7 @@ pipeline {
                 pwd
                 '''
                 sh '''
-                ansible-playbook -i inventory.yml sh_ip_arp.yml
+                ansible-playbook -i inventory.yaml sh_ip_arp.yml
                 '''
             }
         }
