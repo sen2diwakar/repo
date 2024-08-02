@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Execute Ansible playbook') {
             steps {
-                ansiblePlaybook playbook: 'sh_ip_arp.yml', inventory: 'inventory.yaml'
+                ansiblePlaybook playbook: 'sh_ip_arp.yml', inventory: 'inventory.yaml', disableHostKeyChecking: true
             }
         }
     }
