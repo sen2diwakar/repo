@@ -8,8 +8,9 @@ pipeline {
     stages {
         stage('Execute Ansible playbook') {
             steps {
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.yaml', playbook: 'sh_ip_arp.yml'
-            }
+        sh 'ansible-galaxy collection install -r requirement.yml'
+        sh 'ansible-playbook -i inventory.yaml sh_ip_arp.yml'
+      }
         }
     }
 }
