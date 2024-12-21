@@ -1,6 +1,6 @@
 atlanta:
   hosts:
-    172.17.229.251:
+    172.17.133.128:
 
   vars:
     ansible_user: admin
